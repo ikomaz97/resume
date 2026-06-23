@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вячеслав Чернов - Frontend Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #e8e8e8;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            color: #333;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        .header-wrapper {
+            position: relative;
+            padding: 10px 10px 0 10px;
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .header-dark-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 16px;
+            background: #1a1a2e;
+        }
+
+        .header {
+            background: #8ec5c8;
+            padding: 22px 30px 22px 25px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+        }
+
+        .header-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            flex-shrink: 0;
+            background: #ccc;
+        }
+
+        .header-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 6px;
+            line-height: 1.1;
+        }
+
+        .header-role {
+            font-size: 15px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
+
+        /* ===== ДВУХКОЛОНОЧНЫЕ КОНТАКТЫ ===== */
+        .header-contacts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+        }
+
+        .contact-icon {
+            width: 15px;
+            text-align: center;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 13px;
+            height: 13px;
+            fill: #fff;
+        }
+
+        .contact-link {
+            color: #fff;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 1px 4px;
+            border-radius: 3px;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .contact-link:hover {
+            text-decoration-style: solid;
+            text-decoration-thickness: 2px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* ===== BODY ===== */
+        .body {
+            display: flex;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 30%;
+            background: #1e2a3a;
+            color: #ecf0f1;
+            padding: 22px 18px;
+        }
+
+        .sidebar-title {
+            font-size: 12.5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a9bae;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .tech-category {
+            margin-bottom: 8px;
+        }
+
+        .tech-category-name {
+            font-weight: 700;
+            font-size: 11.5px;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .tech-list {
+            list-style: disc;
+            padding-left: 17px;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #c8d6e0;
+        }
+
+        .tech-list li {
+            margin-bottom: 1px;
+        }
+
+        .sidebar-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 14px 0;
+        }
+
+        .edu-item {
+            margin-bottom: 12px;
+        }
+
+        .edu-school {
+            font-weight: 700;
+            font-size: 11.5px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .edu-year {
+            font-size: 10.5px;
+            color: #8a9bae;
+            margin-bottom: 2px;
+        }
+
+        .edu-desc {
+            font-size: 10px;
+            color: #c8d6e0;
+            line-height: 1.45;
+        }
+
+        .lang-item {
+            margin-bottom: 9px;
+        }
+
+        .lang-name {
+            font-size: 11px;
+            color: #ecf0f1;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        .lang-bar {
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lang-fill {
+            height: 100%;
+            background: #8ec5c8;
+            border-radius: 2px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            width: 70%;
+            padding: 22px 24px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #8ec5c8;
+            padding: 4px 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section-header-text {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-text {
+            font-size: 11.5px;
+            line-height: 1.55;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .task-category {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #1e2a3a;
+            margin-bottom: 5px;
+            margin-top: 12px;
+        }
+
+        .task-list {
+            list-style: disc;
+            padding-left: 18px;
+            margin-bottom: 8px;
+        }
+
+        .task-list li {
+            font-size: 10.5px;
+            line-height: 1.45;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        .task-list li::marker {
+            color: #1e2a3a;
+            font-size: 7px;
+        }
+
+        .project-item {
+            margin-bottom: 12px;
+            padding: 8px 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #8ec5c8;
+        }
+
+        .project-link {
+            font-weight: 700;
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 3px;
+            padding: 3px 7px;
+            background: #e8f4f8;
+            border-radius: 4px;
+            border: 1px solid #b8d4e3;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: #d4e9f0;
+            border-color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .project-link svg {
+            width: 11px;
+            height: 11px;
+            fill: #2980b9;
+        }
+
+        .project-desc {
+            font-size: 10.5px;
+            line-height: 1.45;
+            color: #555;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body { 
+                background: none; 
+                padding: 0; 
+            }
+            .page { 
+                box-shadow: none; 
+                margin: 0; 
+                width: 100%; 
+                height: 100%; 
+            }
+            .contact-link {
+                text-decoration: underline;
+                pointer-events: auto !important;
+            }
+            .project-link {
+                border: 1px solid #ccc;
+                background: #f0f0f0;
+            }
+            a {
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- HEADER -->
+    <div class="header-wrapper">
+        <div class="header-dark-bar"></div>
+        <div class="header">
+            <div class="header-photo">
+                <img src="photo.jpg" alt="Вячеслав Чернов">
+            </div>
+            <div class="header-info">
+                <div class="header-name">ВЯЧЕСЛАВ ЧЕРНОВ</div>
+                <div class="header-role">FRONT-END DEVELOPER (React/TypeScript)</div>
+                
+                <div class="header-contacts">
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </span>
+                        <a href="mailto:ikomaz97@gmail.com" class="contact-link">ikomaz97@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        </span>
+                        <a href="https://linkedin.com/in/slava-chernov" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/slava-chernov</a>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </span>
+                        <a href="tel:+79271038045" class="contact-link">+79271038045</a>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                        </span>
+                        <a href="https://t.me/ikomaz97" target="_blank" rel="noopener noreferrer" class="contact-link">@ikomaz97</a>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </span>
+                        <span>Россия Саратов</span>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <span class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </span>
+                        <a href="https://github.com/ikomaz97" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/ikomaz97</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-title">ТЕХНОЛОГИИ:</div>
+            
+            <div class="tech-category">
+                <div class="tech-category-name">Frontend</div>
+                <ul class="tech-list">
+                    <li>JavaScript</li>
+                    <li>TypeScript</li>
+                    <li>React</li>
+                </ul>
+            </div>
+            
+            <div class="tech-category">
+                <div class="tech-category-name">State</div>
+                <ul class="tech-list">
+                    <li>Redux Toolkit</li>
+                    <li>RTK Query</li>
+                    <li>Context API</li>
+                </ul>
+            </div>
+            
+            <div class="tech-category">
+                <div class="tech-category-name">UI</div>
+                <ul class="tech-list">
+                    <li>Material UI</li>
+                    <li>Styled Components</li>
+                    <li>SCSS</li>
+                </ul>
+            </div>
+            
+            <div class="tech-category">
+                <div class="tech-category-name">Tools</div>
+                <ul class="tech-list">
+                    <li>Git</li>
+                    <li>GitHub</li>
+                    <li>Vite</li>
+                    <li>Webpack</li>
+                </ul>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-title">ОБРАЗОВАНИЕ</div>
+            
+            <div class="edu-item">
+                <div class="edu-school">IT-INCUBATOR</div>
+                <div class="edu-year">2024–2026</div>
+                <div class="edu-desc">Frontend Developer<br>JavaScript · TypeScript · React<br>· Redux Toolkit · RTK Query</div>
+            </div>
+            
+            <div class="edu-item">
+                <div class="edu-school">HTML Academy</div>
+                <div class="edu-year">2025</div>
+                <div class="edu-desc">HTML и CSS.<br>Профессиональная верстка сайтов</div>
+            </div>
+            
+            <div class="edu-item">
+                <div class="edu-school">СГАУ им. Н. И. Вавилова</div>
+                <div class="edu-year">1998–2004</div>
+                <div class="edu-desc">Инженер</div>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-title">ЯЗЫКИ</div>
+            
+            <div class="lang-item">
+                <div class="lang-name">Английский (B2)</div>
+                <div class="lang-bar">
+                    <div class="lang-fill" style="width: 75%"></div>
+                </div>
+            </div>
+            
+            <div class="lang-item">
+                <div class="lang-name">Немецкий (A2)</div>
+                <div class="lang-bar">
+                    <div class="lang-fill" style="width: 30%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="section-header">
+                <div class="section-header-text">ОБО МНЕ</div>
+            </div>
+            <p class="about-text">
+                Frontend-разработчик на React и TypeScript. Имею опыт полного цикла разработки SPA с фокусом на оптимизацию производительности (Lighthouse до 97 баллов). Ищу возможность применить и развить свои навыки в коммерческой команде.
+            </p>
+
+            <div class="section-header">
+                <div class="section-header-text">РАБОЧИЕ ЗАДАЧИ:</div>
+            </div>
+
+            <div class="task-category">Архитектура и данные</div>
+            <ul class="task-list">
+                <li>Спроектировал архитектуру SPA с разделением на UI и бизнес-логику.</li>
+                <li>Интегрировал REST API, реализовав CRUD-операции, поиск, фильтрацию, сортировку и пагинацию.</li>
+                <li>Реализовал систему аутентификации: регистрацию, авторизацию, восстановление пароля и приватные маршруты.</li>
+                <li>Организовал управление состоянием приложения с использованием Redux Toolkit, RTK Query и React Context API.</li>
+            </ul>
+
+            <div class="task-category">Пользовательский интерфейс</div>
+            <ul class="task-list">
+                <li>Разработал переиспользуемые React-компоненты и кастомные хуки.</li>
+                <li>Внедрил React Hook Form и Zod для построения и валидации форм.</li>
+                <li>Реализовал Drag-and-Drop для управления элементами интерфейса.</li>
+                <li>Применил систему рейтингов.</li>
+                <li>Обеспечил адаптивную и кроссбраузерную верстку.</li>
+            </ul>
+
+            <div class="task-category">Производительность</div>
+            <ul class="task-list">
+                <li>Внедрил Lazy Loading для ускорения загрузки приложения.</li>
+                <li>Оптимизировал повторные рендеры с использованием React.memo, useMemo и useCallback.</li>
+                <li>Настроил кэширование запросов.</li>
+                <li>Повысил показатель Lighthouse Performance до 97 баллов.</li>
+            </ul>
+
+            <div class="task-category">Качество кода</div>
+            <ul class="task-list">
+                <li>Проводил рефакторинг и устранял дублирование кода.</li>
+                <li>Разрабатывал unit-тесты с использованием Jest.</li>
+                <li>Использовал Git/GitHub для командной разработки.</li>
+                <li>Настраивал сборку проектов с помощью Vite и Webpack.</li>
+                <li>Применял LLM (ChatGPT, Claude, DeepSeek) для анализа кода, рефакторинга и подготовки документации.</li>
+            </ul>
+
+            <div class="section-header" style="margin-top: 12px;">
+                <div class="section-header-text">ПРОЕКТЫ</div>
+            </div>
+
+            <div class="project-item">
+                <a href="https://kinopoisk-hd.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                    kinopoisk-hd.vercel.app
+                </a>
+                <p class="project-desc">
+                    КиноHD — это веб-приложение для поиска, просмотра и каталогизации фильмов с использованием TMDB API. Проект построен на современном стеке React + TypeScript с архитектурой Feature-Sliced Design (FSD).
+                </p>
+            </div>
+
+            <div class="project-item">
+                <a href="https://ikomaz97.github.io/todolist-redax-toolkit2" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                    ikomaz97.github.io/todolist-redax-toolkit2
+                </a>
+                <p class="project-desc">
+                    SPA-приложение для управления задачами с авторизацией, drag-and-drop, пагинацией и переключением темы.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
